@@ -1,0 +1,59 @@
+@import "../../theme/variables";
+
+.button {
+    height: 45px;
+    background: $primary;
+    border-radius: 22px;
+    border-color: transparent;
+    color: $white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.7px;
+    margin: 0 auto;
+    min-width: 180px;
+    outline: none;
+    padding: 0 20px;
+    text-transform: uppercase;
+    transition: all .1s linear;
+    width: auto;
+
+    > div {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        background: darken($primary, 7.5);
+    }
+
+    &--secondary {
+        background: $neutral;
+        color: $primary;
+        height: 30px;
+        min-width: 140px;
+
+        &:hover {
+            background: darken($neutral, 7.5);
+        }
+    }
+}
+
+.button__iconWrapper {
+    width: 20px;
+
+    svg {
+        display: block;
+        margin-left: 5px;
+        width: 100%;
+
+        path {
+            fill: $primary;
+        }
+    }
+}

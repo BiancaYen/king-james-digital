@@ -1,0 +1,146 @@
+@import "../../theme/variables";
+
+$size: 80px;
+$lineWidth: 5px;
+
+.radial__wrapper {
+    position: relative;
+    width: $size + 60;
+    height: $size;
+    margin-right: 20px;
+}
+
+.radial__innerWrapper {
+    position: absolute;
+    width: $size;
+    height: $size;
+    left: 0;
+    transform: rotateZ(45deg);
+    &::after {
+        content: "";
+        background: #fff;
+        border-radius: 50%;
+        width: $size - ($lineWidth*2);
+        height: $size - ($lineWidth*2);
+        position: absolute;
+        top: $lineWidth;
+        left: $lineWidth;
+    }
+}
+
+.radial__percentage {
+    align-items: center;
+    color: $primary;
+    display: flex;
+    font-size: 28px;
+    font-weight: bold;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    span {
+        font-size: 14px;
+    }
+}
+
+.radial__section {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    width: $size/2;
+    > div {
+        background: $neutral;
+        height: $size;
+        width: $size/2;
+        transition: all 1s linear
+    }
+    &--start {
+        left: 0;
+        > div {
+            border-radius: $size 0 0 $size;
+            transform-origin: $size/2 $size/2;
+            transform: rotateZ(0deg)
+        }
+    }
+    &--end {
+        left: $size/2;
+        > div {
+            border-radius: 0 $size $size 0;
+            left: 0;
+            transform-origin: 0 50%;
+            transform: rotateZ(-90deg);
+        }
+    }
+}
+
+.radial__progress {
+    .radial__section {
+        &--end {
+            div {
+                background: $warning;
+            }
+        }
+        &--start {
+            div {
+                background: $warning;
+            }
+        }
+    }
+    .radial__marker {
+        &--start {
+            background: $warning;
+        }
+        &--end {
+            background: $warning;
+        }
+    }
+    &--complete {
+        .radial__section {
+            &--end {
+                div {
+                    background: $primary;
+                }
+            }
+            &--start {
+                div {
+                    background: $primary;
+                }
+            }
+        }
+        .radial__marker {
+            &--start {
+                background: $primary;
+            }
+            &--end {
+                background: $primary;
+            }
+        }
+    }
+}
+
+.radial__progress,
+.radial__marker {
+    background: transparent;
+    > div {
+        background: transparent;
+    }
+}
+
+.radial__marker {
+    background: $neutral;
+    border-radius: 50%;
+    height: $lineWidth;
+    width: $lineWidth;
+    position: absolute;
+    top: 0;
+    left: calc(50% - #{$lineWidth/2});
+    transform-origin: 50% $size/2;
+    transform: rotateZ(-180deg);
+
+    &--end {
+        transform: rotateZ(90deg);
+        transition: all 1s linear
+    }
+}

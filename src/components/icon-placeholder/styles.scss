@@ -1,0 +1,10 @@
+@import "../../theme/variables";
+
+$size: 50px;
+
+.iconPlaceholder {
+    background: $neutral;
+    border-radius: 100%;
+    height: $size;
+    width: $size;
+}
